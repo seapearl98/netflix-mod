@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Outlet, Route, Routes } from "react-router-dom";
 import requests from "./api/request";
 import Banner from "./components/Banner";
@@ -9,26 +10,33 @@ import MainPage from "./routes/MainPage";
 import SearchPage from "./routes/SearchPage";
 import './styles/App.css'
 
-const Layout =() => {
-  return(
-    <div>
-      <Nav/>
-      <Outlet/>
-      <Footer/>
-    </div>
-  )
-}
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import Routers from "./Routers";
+import { au } from "./fbase";
 
 function App() {
+  const [init, setInit] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userInfo, setUserInfo] = useState(null);
+
+  useEffect(()=>{
+      onAuthStateChanged( au, (user) => {
+      if (user) {
+      // User is signed in
+      setIsLoggedIn(user);
+      setUserInfo(user);
+      // const uid = user.uid;
+    } else {
+      setInit(true);
+    }
+  });
+},[])
+console.log(au.currentUser);
+
   return (
     <div className="app">
-      <Routes>
-        <Route path="/" element={<Layout/>}>
-        <Route index element={<MainPage/>}/>
-        <Route path="movieId" element={<DetailPage/>}/>
-        <Route path="search" element={<SearchPage/>}/>
-      </Route>  
-      </Routes>
+      {init ? (
+        <Routers isLoggedIn={Boolean(userInfo)} userInfo={userInfo} /> ): "initializing…"}
       {/* <Nav/>
       <Banner/>
       <Row title="NETFLIX ORIGINALS" id="NO" fetchUrl={requests.fetchNetflixOriginals} isLargeRow/>
