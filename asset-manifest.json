@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/netflix-mod/static/css/main.f0372588.css",
+    "main.js": "/netflix-mod/static/js/main.6400f4a7.js",
+    "index.html": "/netflix-mod/index.html",
+    "main.f0372588.css.map": "/netflix-mod/static/css/main.f0372588.css.map",
+    "main.6400f4a7.js.map": "/netflix-mod/static/js/main.6400f4a7.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f0372588.css",
+    "static/js/main.6400f4a7.js"
+  ]
+}
