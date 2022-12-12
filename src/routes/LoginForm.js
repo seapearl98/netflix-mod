@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-import { au } from '../fbase';
+import { authService } from '../fbase';
+import '../styles/LoginForm.css'
 
 
 function LoginForm() {
@@ -24,10 +25,10 @@ function LoginForm() {
           let data;
           if(newAccount){
               //create newAccount
-              data = await createUserWithEmailAndPassword(au, email, pw)
+              data = await createUserWithEmailAndPassword(authService, email, pw)
           }else{
               //login
-              data = await signInWithEmailAndPassword(au, email, pw)
+              data = await signInWithEmailAndPassword(authService, email, pw)
           }
           //console.log(data);//회원가입을 마친 사용자 정보
         } catch (error) {
@@ -40,10 +41,14 @@ function LoginForm() {
 
   return (
     <div className='LoginForm'>
+      <h3>로그인</h3>
         <form onSubmit={onSubmit}>
-            <input type="email" name="email" value={email} onChange={onChange}/>
-            <input type="password" name="password" value={pw} onChange={onChange}/>
-            <input type="submit" value={newAccount ? "새로운 계정 만들기" : "로그인"}/>
+            <input type="email" name="email" value={email} onChange={onChange}
+            className='emailinput input'/>
+            <input type="password" name="password" value={pw} onChange={onChange}
+            className='pwinput input'/>
+            <input type="submit" value={newAccount ? "새로운 계정 만들기" : "로그인"}
+            className='submit input'/>
             {error && <span className='login-error' style={{color:"red"}}>{error}</span>}
         </form>
         <span className='toggle-span' style={{color:"white"}}

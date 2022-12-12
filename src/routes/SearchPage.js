@@ -6,7 +6,6 @@ import { useDebounce } from '../hooks/useDebounce';
 
 function SearchPage() {
   const [searchResults, setSearchResults] = useState([]);
-
   const navigate = useNavigate();
 
   //console.log('useLacation()', useLocation());
@@ -15,14 +14,18 @@ function SearchPage() {
   }
   let query = useQuery();
   const searchTerm = query.get("q");
-  const debouncedSearchTerm = useDebounce(searchTerm,500)
-  console.log('searchTerm',searchTerm)
 
-  useEffect(() => {
-    if(searchTerm){
-      fetchSearchMovie(searchTerm);
-    }
-  },[searchTerm]);
+    /* useDebounce hook함수를 거쳐 0.5초동안 searchTerm의 새로운 값이 없다면 새로 변수에 할당 */
+    const debouncedSearchTerm = useDebounce(searchTerm, 500);
+
+    /* q속성이 있을 경우에만 실행 */
+    useEffect(() => {
+      if (debouncedSearchTerm) {
+        fetchSearchMovie(debouncedSearchTerm);
+      }
+    }, [debouncedSearchTerm]); // q속성이 변경 될 때마다 재렌더링
+
+
 
   const fetchSearchMovie = async(searchTerm) => {
     try {
@@ -37,33 +40,37 @@ function SearchPage() {
 
     const renderSearchResults = () => {
       return searchResults.length > 0 ? (
+        debouncedSearchTerm ? (
         <section className='search_container'>
-          {searchResults.map(movie => {
+          {searchResults.map((movie) => {
             if(movie.backdrop_path !== null && movie.media_type !== "person"){
-              const movieImageUrl = "https://image.tmdb.org/t/p/w500" + movie.backdrop_path;
+              const movieImageUrl = "https://image.tmdb.org/t/p/w500" + movie?.backdrop_path;
               return (
-                <>
-                <div className='movie__title'>
-                  <ul>
-                    {}
-                  </ul>
-                </div>
                 <div className='movie' key={movie.id}>
-                    <div onClick={() => navigate(`/${movie.id}`)}
-                    className='movie__column-poster'>
-                        <img src={movieImageUrl} 
-                            alt={movie.title || movie.name || movie.original_name}
-                            className="movie__poster" />
-                            {/* */}
-                    </div>        
-                  <h2>{movie.title || movie.name || movie.original_name}</h2>
+                  <div
+                    className='movie__column_poster'
+                    onClick={() => { 
+                      navigate(`/${movie.id}`)
+                      }}>
+                      <img 
+                        className="movie__poster" 
+                        src={movieImageUrl} 
+                        alt={movie.title || movie.name || movie.original_name}/>
+                    <div className='poster__detail'>
+                      <h3 className='poster__detail-title'>{movie.title}</h3>
+                      <p className='poster__detail-info'>클릭하여 상세페이지로 이동</p>
+                    </div>
+                  </div>
                 </div>
-                </>
+
               )
             }
           })}
         </section>
-      ) : (
+        ):(
+          navigate('/')
+        )
+      ) : debouncedSearchTerm ? (
         <section className='no_results'>
           <div className='no_results__text'>
             <p>
@@ -71,8 +78,11 @@ function SearchPage() {
             </p>
           </div>
         </section>
+      ):(
+        navigate('/')
       )
     }
+
 
     return renderSearchResults();
 }

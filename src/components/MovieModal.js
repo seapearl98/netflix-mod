@@ -11,7 +11,12 @@ export default function MovieModal({backdrop_path,title,overview,name,release_da
     <div className='presentation'>
         <div className='wrapper-modal'>
             <div className='modal' ref={ref}>
-                <span className='modal-close' onClick={() => setModalOpen(false)}>X</span>
+                <span 
+                className='modal-close' 
+                onClick={() => {
+                setModalOpen(false)}}>
+                    X
+                </span>
                 <img className='modal__poster-img' alt={`${title ? title : name}`}
                 src={`http://image.tmdb.org/t/p/original/${backdrop_path}`}/>
                 <div className='modal__content'>

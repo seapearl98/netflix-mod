@@ -1,0 +1,30 @@
+.detail {
+  color: #fff;
+  margin-top: 70px;
+}
+.detail__poster {
+  width: 100%;
+}
+
+.detail__info {
+  position: relative;
+  padding: 0 25px 25px;
+}
+.detail__title {
+  display: inline-block;
+  padding: 25px 0 25px;
+}
+.detail__close {
+  position: absolute;
+  top: 25px;
+  right: 35px;
+  font-weight: bold;
+  font-size: 20px;
+  cursor: pointer;
+}
+.detail__close:hover {
+  color: #da1821;
+}
+.detail__info > .runtime {
+  margin: 10px 0 10px;
+}

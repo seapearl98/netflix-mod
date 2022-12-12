@@ -75,6 +75,7 @@ export default function Row({isLargeRow, title, id, fetchUrl}) {
                     onClick={() => handleClick(movie)}
                     />
                     </SwiperSlide>
+                    
                 ))}
             </div>
             {/* <div className='slider__arrow right'

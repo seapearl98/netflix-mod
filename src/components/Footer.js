@@ -22,21 +22,21 @@ export default function Footer() {
 
  )   
 }
-  const FooterContainer = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 40px 0;
-    box-sizing: border-box;
-    border-top: 1px solid. rgb(25, 25, 25);
-    width: 100%;
-    position: relative;
-    z-index: 100;
+const FooterContainer = styled.div`
+  z-index: 100;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 40px 0;
+  border-top: 1px solid #191919;
+  box-sizing: border-box;
 
-    @media (max-width: 769px)
-    {
-    padding: 20px 20px; padding-bottom: 30px;
-    }`;
+  @media (max-width: 768px) {
+    padding: 20px 20px 30px;
+  }
+`;
 
     const FooterContent = styled.div``
     const FooterLinkContainer = styled. div`

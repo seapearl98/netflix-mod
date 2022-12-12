@@ -1,0 +1,79 @@
+.LoginForm{
+    background: rgba(0,0,0,0.7);
+    filter: brightness(1);
+    width: 25%;
+    height: 75%;
+    position: relative;
+    top: 45%; left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    padding: 100px 70px;
+    box-sizing: border-box;
+    text-align: center;
+    
+}
+input{
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    background: #333;
+    color: #83898c;
+}
+input:active{
+    background: #333;
+    color: #83898c;
+    border: none;
+}
+input:checked{
+    background: #333;
+    color: #83898c;
+    border: none;
+}
+.input{
+    display: block;
+    padding: 20px 30px;
+    border-radius: 7px;
+    border: none;
+    box-sizing: border-box;
+    width: 100%;
+    font-size: 20px;
+    background-color: #333;
+    color: #83898c;
+
+}
+.input:focus{
+    background-color: #333;
+    color: #83898c; 
+}
+.input:nth-child(1){
+    margin-bottom: 20px;
+}
+.submit{
+    padding: 15px 30px;
+    margin-top: 40px;
+    text-align: center;
+    color: #fff;
+    background: #E50914;
+}
+.submit:active{
+    background: #E50914;
+    color: #fff;
+}
+.toggle-span{
+    display: block;
+    text-align: center;
+    padding: 15px 5px;
+}
+.toggle-span:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+.LoginForm form{
+    margin-top: 20px;
+}
+h3{
+    color: #fff;
+    text-align: left;
+    font-size: 48px;
+    margin-top: 30px;
+}

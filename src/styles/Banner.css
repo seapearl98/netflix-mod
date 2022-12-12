@@ -42,3 +42,13 @@
     .banner__description{font-size: 0.8rem !important; width: auto !important;}
     .banner__button{font-size: 0.8rem !important; border-radius: 4px !important;}
 }
+
+.close_video {
+    position: relative;
+    bottom: 50px;
+    width: 100%;
+    padding-bottom: 25px;
+    background: linear-gradient(0deg, #111, transparent);
+    color: #fff;
+    text-indent: 25px;
+  }
