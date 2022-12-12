@@ -1,13 +1,15 @@
 {
   "files": {
-    "main.css": "/netflix-mod/static/css/main.f0372588.css",
-    "main.js": "/netflix-mod/static/js/main.6400f4a7.js",
+    "main.css": "/netflix-mod/static/css/main.70396299.css",
+    "main.js": "/netflix-mod/static/js/main.786414ea.js",
+    "static/media/netflix_login_bg.jpg": "/netflix-mod/static/media/netflix_login_bg.a76c6500764a1fb8ed95.jpg",
+    "static/media/logo.png": "/netflix-mod/static/media/logo.c0b93f125de267b27533.png",
     "index.html": "/netflix-mod/index.html",
-    "main.f0372588.css.map": "/netflix-mod/static/css/main.f0372588.css.map",
-    "main.6400f4a7.js.map": "/netflix-mod/static/js/main.6400f4a7.js.map"
+    "main.70396299.css.map": "/netflix-mod/static/css/main.70396299.css.map",
+    "main.786414ea.js.map": "/netflix-mod/static/js/main.786414ea.js.map"
   },
   "entrypoints": [
-    "static/css/main.f0372588.css",
-    "static/js/main.6400f4a7.js"
+    "static/css/main.70396299.css",
+    "static/js/main.786414ea.js"
   ]
 }
